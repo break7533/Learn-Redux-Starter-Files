@@ -12,11 +12,11 @@ Raven.config(sentry_url, {
 	}
 }).install();
 
-logException(new Error('download failed'), {
-	email: 'wesbos@gmail.com'
-});
+// logException(new Error('download failed'), {
+// 	email: 'wesbos@gmail.com'
+// });
 
-Raven.captureMessage('Common error, just message me');
-Raven.showReportDialog();
+// Raven.captureMessage('Common error, just message me');
+// Raven.showReportDialog();
 
 render(<BRouter />, document.getElementById('root'));
