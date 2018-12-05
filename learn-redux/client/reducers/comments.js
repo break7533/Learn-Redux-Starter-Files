@@ -1,5 +1,9 @@
 export default function comments(state = [], action) {
-	console.log(state, action);
-	return state;
+	switch(action.type){
+		case'ADD_COMMENT':
+		return state;
+		default:
+		return state;
+	}
 }
 
