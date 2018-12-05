@@ -7,25 +7,30 @@ export default class Single extends React.Component {
 				<p>
 					<strong>{comment.user}</strong>
 					{comment.text}
-					<button className="remove-comment">&times;</button>
+					<button
+						className="remove-comment"
+						onClick={this.props.removeComment.bind(this, this.props.params.postId, i)}
+					>
+						&times;
+					</button>
 				</p>
 			</div>
 		);
 	}
 
-	handleSubmit(e){
+	handleSubmit(e) {
 		e.preventDefault();
 		const postId = this.props.params.postId;
 		const author = this.refs.author.value;
 		const comment = this.refs.comment.value;
-		console.log(postId,author,comment);
-		this.props.addComment(postId,author,comment);
+		this.props.addComment(postId, author, comment);
+		this.refs.commentForm.reset();
 	}
 
 	render() {
 		return (
 			<div className="comments">
-				{this.props.postComments.map(this.renderComment)}
+				{this.props.postComments.map(this.renderComment.bind(this))}
 				<form ref="commentForm" className="comment-form" onSubmit={this.handleSubmit.bind(this)}>
 					<input type="text" ref="author" placeholder="Author" />
 					<input type="text" ref="comment" placeholder="Comment" />
